@@ -27,7 +27,7 @@ class P2:
     X_test = scaler.transform(X_test)
 
 
-    mlp = MLPClassifier(hidden_layer_sizes=(1,), activation='logistic', solver='lbfgs', 
+    mlp1 = MLPClassifier(hidden_layer_sizes=(1,), activation='logistic', solver='lbfgs', 
                                     alpha=0.0001, batch_size = 'auto', learning_rate_init = 0.001,
                                     max_iter = 1000, shuffle = True)
 
@@ -36,10 +36,10 @@ class P2:
                                     alpha=0.0001, batch_size = 'auto', learning_rate_init = 0.001,
                                     max_iter = 1000, shuffle = True)
     
-    mlp.fit(X_train, y_train)
+    mlp1.fit(X_train, y_train)
     mlp2.fit(X_train, y_train)
 
-    y_prediction = mlp.predict(X_test)
+    y_prediction = mlp1.predict(X_test)
     y_prediction2 = mlp2.predict(X_test)
 
     print("1 hidden layer: \n")
