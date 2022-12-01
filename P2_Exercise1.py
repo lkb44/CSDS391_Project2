@@ -7,7 +7,6 @@ import csv
 
 def plot_data(d, is_title=False, title=''):
     for r in d:
-
         # Assigning colors to species
         if r[4] == 'setosa':
             c = 'red'
@@ -17,18 +16,14 @@ def plot_data(d, is_title=False, title=''):
             c = 'blue'
         else:
             c = 'black'
-
         # Plot Species
         plt.plot(float(r[2]), float(r[3]), linestyle='none', marker='o', color=c)
-
     # Add plot labels
     plt.xlabel('Petal Length')
     plt.ylabel('Petal Width')
-
     if is_title:
         plt.title(title)
     pass
-
 
 def k_means_cluster(k, d):
     # Initialize initial means as k different random points
@@ -92,11 +87,6 @@ def k_means_cluster(k, d):
 
 
 def get_objective_function(d, means):
-    '''
-    1) Get a distance as a radius
-    2) Plot objective function on y-axis with iterations on x-axis
-    '''
-
     sse = 0.0
 
     for r in d:
@@ -107,14 +97,6 @@ def get_objective_function(d, means):
 
 
 def get_decision_bounds(point1, point2, t):
-    '''
-    If y - a = m(x - b) will give the line containing both points 1 and 2, then y = `b - (x - a)/m` will be the line
-    containing the midpoint between a and b and be perpendicular to the line containing a and b
-
-    :param point1:
-    :param point2:
-    :return:
-    '''
     # Intercept point (halfway between the two points in the parameters)
     x_constant = (point1[0] + point2[0]) / 2.0
     y_constant = (point1[1] + point2[1]) / 2.0
@@ -206,13 +188,10 @@ def get_closest_mean(r, means):
 
     return closest_mean
 
-
 def get_distance(pa, pb):
     # returns the distance between 2 points
     # return abs(pa[0] - pb[0]) + abs(pa[1] - pb[1])
     return math.sqrt(math.pow(pa[0] - pb[0], 2) + math.pow(pa[1] - pb[1], 2))
-
-
 
 with open('irisdata.csv') as file:
     # Used to take out the header from the file
@@ -227,10 +206,6 @@ with open('irisdata.csv') as file:
         # Add the iris data to the data 2D array
         data.append(row)
     t = np.linspace(0.0, 7.0, 200)
-
-    '''
-    Clustering
-    '''
 
     # Exercises: 1a, 1b, 1c, and 1d for k = 2
     plot_decision_boundaries(2, data, t)
